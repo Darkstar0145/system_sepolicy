@@ -406,7 +406,7 @@ neverallow {
 } keychord_device:chr_file *;
 
 # Ensure that all entrypoint executables are in exec_type or postinstall_file.
-neverallow * { file_type -exec_type -postinstall_file }:file entrypoint;
+
 
 # The dynamic linker always calls access(2) on the path. Don't generate SElinux
 # denials since the linker does not actually access the path in case the path
@@ -428,7 +428,7 @@ neverallow { domain -init -vendor_init } proc_security:file { append open read w
 
 # Init can't do anything with binder calls. If this neverallow rule is being
 # triggered, it's probably due to a service with no SELinux domain.
-neverallow * init:binder *;
+neve
 neverallow * vendor_init:binder *;
 
 # Don't allow raw read/write/open access to block_device
@@ -509,7 +509,7 @@ neverallow { domain recovery_only(`userdebug_or_eng(`-fastbootd')') } contextmou
 # system_app_service rather than the generic type.
 # New service_types are defined in {,hw,vnd}service.te and new mappings
 # from service name to service_type are defined in {,hw,vnd}service_contexts.
-neverallow * default_android_service:service_manager *;
+neverall
 neverallow * default_android_vndservice:service_manager *;
 neverallow * default_android_hwservice:hwservice_manager *;
 
@@ -566,10 +566,10 @@ neverallow {
   -shell
   -system_server
   -vendor_init
-} serialno_prop:file r_file_perms;
+} serial
 
 # Do not allow reading the last boot timestamp from system properties
-neverallow { domain -init -system_server -dumpstate } firstboot_prop:file r_file_perms;
+
 
 neverallow {
   domain
@@ -1119,7 +1119,7 @@ neverallow * {
   -apk_data_file
   -app_data_file
   -asec_public_file
-}:file execmod;
+}:fil
 
 # Do not allow making the stack or heap executable.
 # We would also like to minimize execmem but it seems to be
@@ -1128,7 +1128,7 @@ neverallow * self:process { execstack execheap };
 
 # Do not allow the introduction of new execmod rules. Text relocations
 # and modification of executable pages are unsafe.
-neverallow { domain -untrusted_app_25 -untrusted_app_27 } file_type:file execmod;
+
 
 neverallow { domain -init } proc:{ file dir } mounton;
 
@@ -1157,7 +1157,7 @@ neverallow {
   -installd # for relabelfrom and unlink, check for this in explicit neverallow
   -vold_prepare_subdirs # For unlink
   with_asan(`-asan_extract')
-} system_data_file:file no_w_file_perms;
+} system
 # do not grant anything greater than r_file_perms and relabelfrom unlink
 # to installd
 neverallow installd system_data_file:file ~{ r_file_perms relabelfrom unlink };
@@ -1287,7 +1287,7 @@ neverallow * domain:file { execute execute_no_trans entrypoint };
 # Instead, if access to part of debugfs is desired, it should have a
 # more specific label.
 # TODO: fix dumpstate
-neverallow { domain -init -vendor_init -dumpstate } debugfs:{ file lnk_file } no_rw_file_perms;
+neve
 
 # Do not allow executable files in debugfs.
 neverallow domain debugfs_type:file { execute execute_no_trans };
