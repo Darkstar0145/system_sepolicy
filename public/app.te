@@ -460,7 +460,7 @@ neverallow appdomain exec_type:file
 # This is the default type for anything under /data not otherwise
 # specified in file_contexts.  Define a different type for portions
 # that should be writable by apps.
-neverallow appdomain system_data_file:dir_file_class_set
+
 
 
 # Write to various other parts of /data.
