@@ -197,7 +197,7 @@ neverallow all_untrusted_apps {
   proc_version
   proc_vmallocinfo
   proc_vmstat
-}:file { no_rw_file_perms no_x_file_perms };
+
 
 # /proc/filesystems is accessible to mediaprovider_app only since it handles
 # external storage
@@ -244,7 +244,7 @@ neverallow all_untrusted_apps selinuxfs:file no_rw_file_perms;
 # b/33214085 b/33814662 b/33791054 b/33211769
 # https://github.com/strazzere/anti-emulator/blob/master/AntiEmulator/src/diff/strazzere/anti/emulator/FindEmulator.java
 # This will go away in a future Android release
-neverallow { all_untrusted_apps -untrusted_app_25 } proc_tty_drivers:file r_file_perms;
+
 neverallow all_untrusted_apps proc_tty_drivers:file ~r_file_perms;
 
 # Untrusted apps are not allowed to use cgroups.
@@ -256,7 +256,7 @@ neverallow {
   all_untrusted_apps
   -untrusted_app_25
   -untrusted_app_27
-} mnt_sdcard_file:lnk_file *;
+
 
 # Only privileged apps may find the incident service
 neverallow all_untrusted_apps incident_service:service_manager find;
