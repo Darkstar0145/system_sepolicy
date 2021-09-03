@@ -272,7 +272,7 @@ neverallow {
   -otapreopt_slot
   -art_apex_postinstall
   -art_apex_boot_integrity
-} dalvikcache_data_file:file no_w_file_perms;
+
 
 neverallow {
   domain
