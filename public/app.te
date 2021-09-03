@@ -464,7 +464,7 @@ neverallow appdomain exec_type:file
 
 
 # Write to various other parts of /data.
-neverallow appdomain drm_data_file:dir_file_class_set
+appdomain drm_data_file:dir_file_class_set
     { create write setattr relabelfrom relabelto append unlink link rename };
 neverallow { appdomain -platform_app -system_app }
     apk_data_file:dir_file_class_set
