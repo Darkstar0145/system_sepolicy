@@ -16,7 +16,7 @@ neverallow {
 
 # On TREBLE devices, a limited set of files in /vendor are accessible to
 # only a few whitelisted coredomains to keep system/vendor separation.
-full_treble_only(`
+
     # Limit access to /vendor/app
     neverallow {
         coredomain
@@ -96,7 +96,8 @@ full_treble_only(`
 # Core domains are not permitted to use kernel interfaces which are not
 # explicitly labeled.
 # TODO(b/65643247): Apply these neverallow rules to all coredomain.
-full_treble_only(`
+
+
   # /proc
   neverallow {
     coredomain
